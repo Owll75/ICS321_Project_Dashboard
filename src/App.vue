@@ -17,20 +17,16 @@ const defaultLayout = "default";
 
 const { currentRoute } = useRouter();
 const trouter = useRouter();
-const appInit = ref(false)
+const appInit = ref(null)
 const user = supabase.auth.user
 
-console.log("->>")
 
-//console.log(router.getRoutes())
-
-if(user){
+if(!user){
   appInit.value = true 
   console.log(user)
-}else{
-  appInit.value = false
-}
+}else{appInit.value = false}
 
+//console.log(router.getRoutes())
 if(appInit.value == true){
 
 console.log("Logged In")
@@ -42,9 +38,13 @@ console.log("Logged In")
       router.push('/login')
 }
 })
-  
+  console.log(appInit.value)
   console.log("Logged out")
 }
+
+
+
+
 
 supabase.auth.onAuthStateChange((_,session) =>{
    userStore.methods.setUser(session)

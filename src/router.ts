@@ -12,6 +12,7 @@ import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
 import Navbar from "./components/navbar.vue";
+
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
@@ -58,10 +59,10 @@ const routes: RouteRecordRaw[] = [
   //   component: Modal,
   // },
    {
-     path: "/blank",
-     name: "Blank",
-     component: Blank,
-   },
+    path: '/logout',
+    name: 'Signout',
+    component: null,
+   }
 ];
 
 const router = createRouter({
