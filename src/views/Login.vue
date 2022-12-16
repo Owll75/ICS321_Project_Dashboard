@@ -72,24 +72,23 @@ import { useRouter } from "vue-router";
 import { supabase } from '../supabase';
 
 
-const props = defineProps(['session'])
-  const { session } = toRefs(props)
+
 const router = useRouter();
 const email = ref("");
-const loading = ref(false)
 
 const password = ref("");
 const errorMsg = ref("")
 
   async function login() {
     try{
-    let { data, error } = await supabase.auth.signInWithPassword({
+    let { data, error } = await supabase.auth.signIn({
   email: email.value,
   password: password.value,
 })
 if(error) throw error
 
-console.log(data)//onSuccess auth
+
+
 router.push('/report')
 
 }catch(error){

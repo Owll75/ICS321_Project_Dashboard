@@ -23,11 +23,13 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/report",
     name: "Report",
+    meta: { requiresAuth: true },
     component: Report,
   },
   {
     path: "/forms",
     name: "Forms",
+    meta: { requiresAuth: true },
     component: Forms,
   },
   {
@@ -46,11 +48,13 @@ const routes: RouteRecordRaw[] = [
   {
     path: "/Users",
     name: "Users",
+    meta: { requiresAuth: true },
     component: Users,
   },
   {
     path: "/packages",
     name: "Packages",
+    meta: { requiresAuth: true },
     component: Packages,
   },
   // {
@@ -61,7 +65,11 @@ const routes: RouteRecordRaw[] = [
    {
     path: '/logout',
     name: 'Signout',
+    
     component: null,
+   
+    meta: {requiresAuth: true},
+    
    }
 ];
 

@@ -271,7 +271,9 @@
   
   <script setup lang="ts">
   import { useTableData } from "../hooks/useTableData";
-  
+  import {supabase} from '../supabase'
+
+  console.log(supabase.auth.user)
   const {
     simpleTableData,
     paginatedTableData,

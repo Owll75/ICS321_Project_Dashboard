@@ -7,11 +7,11 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.2.0",
+    "@supabase/supabase-js": "^1.6.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "vue": "^3.2.6",
+    "vue": "^3.2.45",
     "vue-router": "4"
   },
   "devDependencies": {

@@ -6,8 +6,8 @@ const myState = reactive({
 })
 const methods = {
     setUser(session){
-        myState.user= session ? session.user : null
-       
+        myState.user = session!=null ? session.user : null
+        console.log("Session:" + session)
     }
 }
 
