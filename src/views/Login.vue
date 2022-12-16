@@ -21,7 +21,7 @@
             fill="white"
           />
         </svg>
-        <span class="text-2xl font-semibold text-gray-700">Dashboard</span>
+        <span class="text-2xl font-semibold text-gray-700">Sign In</span>
       </div>
 
       <form class="mt-4" @submit.prevent="login">
@@ -52,19 +52,52 @@
           </button>
         </div>
       </form>
+      <p class="flex justify-center mt-3"><a href="/Register" class="text-sky-600">New Account</a></p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+//import { ref } from "vue";
 
+import { onMounted, ref, toRefs } from 'vue'
+
+import { useRouter } from "vue-router";
+import { supabase } from '../supabase';
+
+
+const props = defineProps(['session'])
+  const { session } = toRefs(props)
 const router = useRouter();
 const email = ref("");
+const loading = ref(false)
+
 const password = ref("");
 
-function login() {
-  router.push("/report");
+
+  async function login() {
+    try{
+    let { data, error } = await supabase.auth.signInWithPassword({
+  email: email.value,
+  password: password.value,
+})
+if(error) throw error
+console.log(data)
+}catch(error){
+
+    }
+
+   
+//  router.push("/report");
+  //await register()
+}
+
+
+
+
+
+async function t(){
+
+
 }
 </script>

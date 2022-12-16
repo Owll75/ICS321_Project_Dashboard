@@ -40,11 +40,12 @@
                   fill="currentColor"
                 />
               </svg>
+            
             </div>
-
+            
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
-              <div class="text-gray-500">New Users</div>
+              <h4 class="text-2xl font-semibold text-gray-700">{{cusmtersCount}}</h4>
+              <div class="text-gray-500">Customers</div>
             </div>
           </div>
         </div>
@@ -76,52 +77,19 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">200,521</h4>
-              <div class="text-gray-500">Total Orders</div>
+              <h4 class="text-2xl font-semibold text-gray-700">{{packagesCount}}</h4>
+              <div class="text-gray-500">Total Packages</div>
             </div>
           </div>
         </div>
 
-        <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
-          <div
-            class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
-          >
-            <div class="p-3 bg-pink-600 bg-opacity-75 rounded-full">
-              <svg
-                class="w-8 h-8 text-white"
-                viewBox="0 0 28 28"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6.99998 11.2H21L22.4 23.8H5.59998L6.99998 11.2Z"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M9.79999 8.4C9.79999 6.08041 11.6804 4.2 14 4.2C16.3196 4.2 18.2 6.08041 18.2 8.4V12.6C18.2 14.9197 16.3196 16.8 14 16.8C11.6804 16.8 9.79999 14.9197 9.79999 12.6V8.4Z"
-                  stroke="currentColor"
-                  stroke-width="2"
-                />
-              </svg>
-            </div>
-
-            <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">215,542</h4>
-              <div class="text-gray-500">Available Products</div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </div>
 
-    <div class="mt-8"></div>
-
     <div class="flex flex-col mt-8">
       <div class="mt-4">
-      <h4 class="text-gray-600">Simple Table</h4>
+      <h4 class="text-gray-600">Shipments Data</h4>
 
       <div class="mt-6">
         <div class="my-6 overflow-hidden bg-white rounded-md shadow">
@@ -136,7 +104,7 @@
                 <th
                   class="px-5 py-3 text-sm font-medium text-gray-100 uppercase bg-indigo-800"
                 >
-                  Total orders
+                Total Packages
                 </th>
               </tr>
             </thead>
@@ -273,16 +241,20 @@ interface User {
   status: string;
   role: string;
 }
+const selectedCity = ref("")
 
+selectedCity.value
 
 const testUser: User = {
-  name: "John Doe",
+  name: "Johnqqqq Doe",
   email: "john@example.com",
   title: "Software Engineer",
-  title2: "Web dev",
+  title2: "Absloute dev",
   status: "Active",
   role: "Owner",
 };
+const packagesCount = 124
+const cusmtersCount = 500 
 
 const users = ref<User[]>([...Array(10).keys()].map(() => testUser));
 </script>

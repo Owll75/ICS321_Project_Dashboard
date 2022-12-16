@@ -75,7 +75,7 @@ export function useTableData() {
       name: 'John Doe',
       email: 'john@example.com',
       title: 'Software Engineer',
-      title2: 'Web dev',
+      title2: 'Abs dev',
       status: 'Active',
       role: 'Owner',
     }))

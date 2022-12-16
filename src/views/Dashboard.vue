@@ -43,7 +43,7 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
+              <h4 class="text-2xl font-semibold text-gray-700">{{customersNum}}</h4>
               <div class="text-gray-500">New Users</div>
             </div>
           </div>
@@ -229,7 +229,7 @@ interface User {
   status: string;
   role: string;
 }
-
+const customersNum = "12"
 const testUser: User = {
   name: "John Doe",
   email: "john@example.com",

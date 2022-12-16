@@ -10,7 +10,8 @@ import Card from "./views/Card.vue";
 import Blank from "./views/Blank.vue";
 import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
-
+import Register from "./views/Register.vue";
+import Navbar from "./components/navbar.vue";
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
@@ -28,6 +29,14 @@ const routes: RouteRecordRaw[] = [
     name: "Forms",
     component: Forms,
   },
+  {
+    path: "/Register",
+    name: "Register",
+    component: Register,
+    meta: {layout: "navbar"},
+    
+  },
+  
   // {
   //   path: "/cards",
   //   name: "Cards",
