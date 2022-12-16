@@ -23,7 +23,10 @@
         </svg>
         <span class="text-2xl font-semibold text-gray-700">Sign In</span>
       </div>
-
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mt-3 rounded relative" v-if="errorMsg" role="alert">
+  <strong class="font-bold">Unable to Log In:</strong>
+  <span class="block sm:inline">{{errorMsg}}</span>
+</div>
       <form class="mt-4" @submit.prevent="login">
         <label class="block">
           <span class="text-sm text-gray-700">Email</span>
@@ -51,8 +54,11 @@
             Sign in
           </button>
         </div>
+        <router-link class="text-sm mt-6 text-center" :to="{name:'Register'}" >
+          Don't have an account yet? <span class="text-sky-600">Sign up</span>
+        </router-link>
       </form>
-      <p class="flex justify-center mt-3"><a href="/Register" class="text-sky-600">New Account</a></p>
+   
     </div>
   </div>
 </template>
@@ -73,7 +79,7 @@ const email = ref("");
 const loading = ref(false)
 
 const password = ref("");
-
+const errorMsg = ref("")
 
   async function login() {
     try{
@@ -82,22 +88,22 @@ const password = ref("");
   password: password.value,
 })
 if(error) throw error
-console.log(data)
-}catch(error){
 
-    }
+console.log(data)//onSuccess auth
+router.push('/report')
+
+}catch(error){
+  errorMsg.value = error.message  
+}
 
    
-//  router.push("/report");
-  //await register()
-}
-
-
-
-
-
-async function t(){
-
+//  router.push("/report"); //If [authenticated] -> then PUSH
 
 }
+
+
+
+
+
+
 </script>

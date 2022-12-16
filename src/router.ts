@@ -14,7 +14,7 @@ import Register from "./views/Register.vue";
 import Navbar from "./components/navbar.vue";
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
+    path: "/login",
     name: "Login",
     component: Login,
     meta: { layout: "empty" },
@@ -33,7 +33,7 @@ const routes: RouteRecordRaw[] = [
     path: "/Register",
     name: "Register",
     component: Register,
-    meta: {layout: "navbar"},
+    meta: {layout: "empty"},
     
   },
   
@@ -57,11 +57,11 @@ const routes: RouteRecordRaw[] = [
   //   name: "Modal",
   //   component: Modal,
   // },
-  // {
-  //   path: "/blank",
-  //   name: "Blank",
-  //   component: Blank,
-  // },
+   {
+     path: "/blank",
+     name: "Blank",
+     component: Blank,
+   },
 ];
 
 const router = createRouter({
