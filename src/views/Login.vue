@@ -112,12 +112,12 @@ async function checkUserRole(user){
 }
 
 async function customerAuth(){
-
+//Route: /
  //Route to customer dashboard
 }
 
 async function adminAuth(){
-  
+  //Route: /admin/
 //Route to admin dashboard
 }
 
