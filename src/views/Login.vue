@@ -88,8 +88,8 @@ const errorMsg = ref("")
 if(error) throw error
 
 
-
-router.push('/report')
+checkUserRole(data.user)
+//router.push('/report')
 
 }catch(error){
   errorMsg.value = error.message  
@@ -101,7 +101,25 @@ router.push('/report')
 }
 
 
+async function checkUserRole(user){
+  if(user.role == "service_role"){//If user is admin[employee] -> redirect to Employee dashboard
+      //Admin
+      
+      adminAuth()
+  }else{//If user is not admin[employee] -> Redirect to Customer Dashboard
+    customerAuth()
+  }
+}
 
+async function customerAuth(){
+
+ //Route to customer dashboard
+}
+
+async function adminAuth(){
+  
+//Route to admin dashboard
+}
 
 
 

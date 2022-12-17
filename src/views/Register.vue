@@ -131,13 +131,14 @@ const errorMsg = ref("")
 async function register(){
     if(password.value == confirmPassword.value){
     try{
-    let { data, error } = await supabase.auth.signUp({
+    let {error} = await supabase.auth.signUp({
   email: email.value,
   password: password.value
 })
     if(error) throw error //Check if Registered Successfully
-    
-    InsertCustomerDetails(data) //Register new customer with user_id (included in data argument.)
+      console.log()
+     
+    InsertCustomerDetails(await supabase.auth.session().user.id) //Register new customer with user_id (included in data argument.)
     
     }catch(error){ //Show error message 
       
@@ -152,14 +153,14 @@ async function register(){
 }
 
 
-async function InsertCustomerDetails(userDetails){
+async function InsertCustomerDetails(userId){
     const { data, error } = await supabase
   .from('customer')
   .insert([
-    { firstname: firstname.value,lastname: lastname.value, email:email.value, phone:phone.value,user_id:userDetails.user.id},
+    { firstname: firstname.value,lastname: lastname.value, email:email.value, phone:phone.value,user_id:userId},
   ])
 
-    console.log(userDetails)
+    console.log(userId)
     console.log(data)
     router.push("/login")
 }

@@ -47,11 +47,16 @@ router.beforeEach((to, from, next) => {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     let isLogged = (supabase.auth.user() == null ? false : true)
-    if(to.fullPath =='/logout'){
+    let isAdmin = (supabase.auth.user().role =='service_role' ? true : false)
+    let routePath = to.fullPath;
+
+    if(routePath =='/logout'){
       //Sign out
       isLogged = false
       supabase.auth.signOut()
     }
+
+
     if (!isLogged) {
       next({
         path: '/login',
@@ -59,6 +64,13 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
+    
+    if(!isAdmin && routePath.startsWith("/admin")){
+ 
+      router.push("/unauthorized")
+       
+    }
+
   } else {
     next() 
   }

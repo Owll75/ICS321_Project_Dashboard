@@ -11,8 +11,7 @@ import Blank from "./views/Blank.vue";
 import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
-import Navbar from "./components/navbar.vue";
-
+import UnAuthorized from "./views/unauthorized.vue";
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
@@ -57,11 +56,13 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true },
     component: Packages,
   },
-  // {
-  //   path: "/modal",
-  //   name: "Modal",
-  //   component: Modal,
-  // },
+   {
+     path: "/admin/modal",
+     name: "Modal",
+     component: Modal,
+     meta: {layout:'empty', requiresAuth: true },
+
+   },
    {
     path: '/logout',
     name: 'Signout',
@@ -70,7 +71,24 @@ const routes: RouteRecordRaw[] = [
    
     meta: {requiresAuth: true},
     
+   },
+
+   
+
+   {
+    path: '/unauthorized',
+    name: 'UnAuthorized',
+    
+    component: UnAuthorized,
+   
+    meta: {layout: 'empty',requiresAuth: true},
+    
    }
+
+
+
+   
+   
 ];
 
 const router = createRouter({
