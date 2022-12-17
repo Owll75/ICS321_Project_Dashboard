@@ -31,13 +31,13 @@ const routes: RouteRecordRaw[] = [
   */
   {
     path: "/admin/report",
-    name: "Report",
+    name: "ReportAdmin",
     meta: { requiresAuth: true },
     component: Report,
   },
   {
     path: "/admin/forms",
-    name: "Forms",
+    name: "FormsAdmin",
     meta: { requiresAuth: true },
     component: Forms,
   },
@@ -68,13 +68,13 @@ const routes: RouteRecordRaw[] = [
   // },
   {
     path: "/admin/Users",
-    name: "Users",
+    name: "UsersAdmin",
     meta: { requiresAuth: true },
     component: Users,
   },
   {
     path: "/admin/packages",
-    name: "Packages",
+    name: "PackagesAdmin",
     meta: { requiresAuth: true },
     component: Packages,
   },
