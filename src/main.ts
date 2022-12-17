@@ -19,5 +19,5 @@ app.component('dashboard-layout', DashboardLayout);
 app.use(router).mount('#app');
 
 //for userPage
-//app.use(userRouter).mount('#app');
+
 

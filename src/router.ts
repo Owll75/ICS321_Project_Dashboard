@@ -13,6 +13,7 @@ import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
 import UnAuthorized from "./views/unauthorized.vue";
 import Customer from "./components/UserLayout.vue"
+import userRouter from "./userRouter";
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
@@ -20,13 +21,14 @@ const routes: RouteRecordRaw[] = [
     component: Login,
     meta: { layout: "empty" },
   },
-
+/*
   {
     path: "/customer",
     name: "customer",
     component: Customer,
     meta:{requiresAuth: true,layout:'empty'},
   },
+  */
   {
     path: "/admin/report",
     name: "Report",
@@ -39,6 +41,7 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true },
     component: Forms,
   },
+  
   {
     path: "/Register",
     name: "Register",
@@ -46,6 +49,7 @@ const routes: RouteRecordRaw[] = [
     meta: {layout: "empty"},
     
   },
+  
   {
     path: '/unauthorized',
     name: 'UnAuthorized',
@@ -89,10 +93,11 @@ const routes: RouteRecordRaw[] = [
     
    }
 ];
-
+var multiRoutes = []
+multiRoutes = multiRoutes.concat(routes,userRouter)
 const router = createRouter({
   history: createWebHistory(),
-  routes: routes,
+  routes: multiRoutes,
 });
 
 export default router;

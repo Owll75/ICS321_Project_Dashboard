@@ -24,7 +24,7 @@
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'HomePage' ? activeClass : inactiveClass]"
-            to="/UserHomePage"
+            to="/customer"
           >
             <svg
               class="w-5 h-5"
@@ -48,7 +48,7 @@
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'Packages' ? activeClass : inactiveClass]"
-            to="/packages"
+            to="/customer/packages"
           >
             <svg
               class="w-5 h-5"
@@ -80,7 +80,7 @@
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'Users' ? activeClass : inactiveClass]"
-            to="/users"
+            to="/customer/users"
           >
             <svg
               class="w-5 h-5"
@@ -108,7 +108,7 @@
           <router-link
             class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
             :class="[$route.name === 'Forms' ? activeClass : inactiveClass]"
-            to="/forms"
+            to="/customer/forms"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
               <path
