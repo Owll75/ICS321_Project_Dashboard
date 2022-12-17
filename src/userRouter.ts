@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
-import Report from "./views/Report.vue";
+import UserHomePage from "./views/UserHomePage.vue";
 import Forms from "./views/Forms.vue";
 import Users from "./views/Users.vue";
 // import UIElements from "./views/UIElements.vue";
@@ -11,49 +11,45 @@ import Blank from "./views/Blank.vue";
 import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
-import UnAuthorized from "./views/unauthorized.vue";
+import Navbar from "./components/navbar.vue";
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
     name: "Login",
     component: Login,
     meta: { layout: "empty" },
-  },
+  }
+  ,
   {
-    path: "/report",
-    name: "Report",
-    meta: { requiresAuth: true },
-    component: Report,
+    path: "/UserHomePage",
+    name: "UserHomePage",
+    component: UserHomePage,
   },
   {
     path: "/forms",
     name: "Forms",
-    meta: { requiresAuth: true },
     component: Forms,
   },
   {
     path: "/Register",
     name: "Register",
     component: Register,
-    meta: {layout: "empty"},
+    meta: {layout: "navbar"},
     
   },
-  
-  // {
-  //   path: "/cards",
-  //   name: "Cards",
-  //   component: Card,
-  // },
+  {
+    path: "/cards",
+    name: "Cards",
+    component: Card,
+  },
   {
     path: "/Users",
     name: "Users",
-    meta: { requiresAuth: true },
     component: Users,
   },
   {
     path: "/packages",
     name: "Packages",
-    meta: { requiresAuth: true },
     component: Packages,
   },
   // {
@@ -61,20 +57,16 @@ const routes: RouteRecordRaw[] = [
   //   name: "Modal",
   //   component: Modal,
   // },
-   //{
-   // path: '/logout',
-    //name: 'Signout',
-    
-  //   component: Login,
-   
-  //   meta: {requiresAuth: true},
-    
-  // }
+  // {
+  //   path: "/blank",
+  //   name: "Blank",
+  //   component: Blank,
+  // },
 ];
 
-const router = createRouter({
+const userRouter = createRouter({
   history: createWebHistory(),
   routes: routes,
 });
 
-export default router;
+export default userRouter;
