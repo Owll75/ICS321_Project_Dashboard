@@ -15,7 +15,7 @@ import Navbar from "./components/navbar.vue";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/login",
+    path: "/",
     name: "Login",
     component: Login,
     meta: { layout: "empty" },
@@ -62,15 +62,15 @@ const routes: RouteRecordRaw[] = [
   //   name: "Modal",
   //   component: Modal,
   // },
-   {
-    path: '/logout',
-    name: 'Signout',
+  //  {
+  //   path: '/logout',
+  //   name: 'Signout',
     
-    component: null,
+  //   component: Login,
    
-    meta: {requiresAuth: true},
+  //   meta: {requiresAuth: true},
     
-   }
+  //  }
 ];
 
 const router = createRouter({
