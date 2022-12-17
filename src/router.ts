@@ -67,13 +67,13 @@ const routes: RouteRecordRaw[] = [
   //   component: Card,
   // },
   {
-    path: "/Users",
+    path: "/admin/Users",
     name: "Users",
     meta: { requiresAuth: true },
     component: Users,
   },
   {
-    path: "/packages",
+    path: "/admin/packages",
     name: "Packages",
     meta: { requiresAuth: true },
     component: Packages,
@@ -86,9 +86,7 @@ const routes: RouteRecordRaw[] = [
    {
     path: '/logout',
     name: 'Signout',
-    
-     component: Blank,
-   
+    redirect:"/login",
      meta: {requiresAuth: true},
     
    }
