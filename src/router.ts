@@ -12,21 +12,29 @@ import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
 import UnAuthorized from "./views/unauthorized.vue";
+import Customer from "./components/UserLayout.vue"
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
+    path: "/login",
     name: "Login",
     component: Login,
     meta: { layout: "empty" },
   },
+
   {
-    path: "/report",
+    path: "/customer",
+    name: "customer",
+    component: Customer,
+    meta:{requiresAuth: true,layout:'empty'},
+  },
+  {
+    path: "/admin/report",
     name: "Report",
     meta: { requiresAuth: true },
     component: Report,
   },
   {
-    path: "/forms",
+    path: "/admin/forms",
     name: "Forms",
     meta: { requiresAuth: true },
     component: Forms,
@@ -38,7 +46,17 @@ const routes: RouteRecordRaw[] = [
     meta: {layout: "empty"},
     
   },
-  
+  {
+    path: '/unauthorized',
+    name: 'UnAuthorized',
+    
+    component: UnAuthorized,
+   
+    meta: {layout: 'empty',requiresAuth: true},
+    
+   },
+
+
   // {
   //   path: "/cards",
   //   name: "Cards",
@@ -61,15 +79,15 @@ const routes: RouteRecordRaw[] = [
   //   name: "Modal",
   //   component: Modal,
   // },
-   //{
-   // path: '/logout',
-    //name: 'Signout',
+   {
+    path: '/logout',
+    name: 'Signout',
     
-  //   component: Login,
+     component: Blank,
    
-  //   meta: {requiresAuth: true},
+     meta: {requiresAuth: true},
     
-  // }
+   }
 ];
 
 const router = createRouter({

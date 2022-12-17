@@ -112,13 +112,17 @@ async function checkUserRole(user){
 }
 
 async function customerAuth(){
-//Route: /
+//Route: /customer/...
  //Route to customer dashboard
+ console.log("Your are customer")
+ router.push("/customer")
 }
 
 async function adminAuth(){
-  //Route: /admin/
+  //Route: /admin/...
 //Route to admin dashboard
+console.log("You are admin")
+router.push("/admin/report")
 }
 
 

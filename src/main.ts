@@ -9,15 +9,15 @@ import UserLayout from './components/UserLayout.vue';
 import EmptyLayout from './components/EmptyLayout.vue';
 const app = createApp(App);
 //for admin
-app.component('default-layout', DashboardLayout);
+app.component('dashboard-layout', DashboardLayout);
 
 //for user
-// app.component('default-layout', UserLayout);
-
+ app.component('user-layout', UserLayout);
+//
 // app.component('empty-layout', EmptyLayout);
 //for admin page
 app.use(router).mount('#app');
 
 //for userPage
-app.use(userRouter).mount('#app');
+//app.use(userRouter).mount('#app');
 
