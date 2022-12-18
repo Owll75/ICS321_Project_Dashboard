@@ -11,12 +11,12 @@
           <div class="flex">
             <div class="relative">
               <select
-                class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-l appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-              >
-                <option>5</option>
-                <option>10</option>
-                <option>20</option>
-              </select>
+                  class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                >
+                  <option>All</option>
+                  <option>Admin</option>
+                  <option>Customer</option>
+                </select>
 
               <div
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none"
@@ -34,13 +34,7 @@
             </div>
 
             <div class="relative">
-              <select
-                class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
-              >
-                <option>All</option>
-                <option>Active</option>
-                <option>Inactive</option>
-              </select>
+              
 
               <div
                 class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none"
@@ -76,112 +70,14 @@
             />
           </div>
         </div>
-
-        <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-          <div
-            class="inline-block min-w-full overflow-hidden rounded-lg shadow"
-          >
-            <table class="min-w-full leading-normal">
-              <thead>
-                <tr>
-                  <th
-                    class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200"
-                  >
-                    User
-                  </th>
-                  <th
-                    class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200"
-                  >
-                    Role
-                  </th>
-                  <th
-                    class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200"
-                  >
-                    Created at
-                  </th>
-                  <th
-                    class="px-5 py-3 text-xs font-semibold tracking-wider text-left text-gray-600 uppercase bg-gray-100 border-b-2 border-gray-200"
-                  >
-                    Status
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(u, index) in paginatedTableData" :key="index">
-                  <td
-                    class="px-5 py-5 text-sm bg-white border-b border-gray-200"
-                  >
-                    <div class="flex items-center">
-                      <div class="flex-shrink-0 w-10 h-10">
-                        <img
-                          class="w-full h-full rounded-full"
-                          :src="u.picture"
-                          alt="profile pic"
-                        />
-                      </div>
-
-                      <div class="ml-3">
-                        <p class="text-gray-900 whitespace-nowrap">
-                          {{ u.name }}
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td
-                    class="px-5 py-5 text-sm bg-white border-b border-gray-200"
-                  >
-                    <p class="text-gray-900 whitespace-nowrap">{{ u.role }}</p>
-                  </td>
-                  <td
-                    class="px-5 py-5 text-sm bg-white border-b border-gray-200"
-                  >
-                    <p class="text-gray-900 whitespace-nowrap">
-                      {{ u.created }}
-                    </p>
-                  </td>
-                  <td
-                    class="px-5 py-5 text-sm bg-white border-b border-gray-200"
-                  >
-                    <span
-                      :class="`relative inline-block px-3 py-1 font-semibold text-${u.statusColor}-900 leading-tight`"
-                    >
-                      <span
-                        aria-hidden
-                        :class="`absolute inset-0 bg-${u.statusColor}-200 opacity-50 rounded-full`"
-                      ></span>
-                      <span class="relative">{{ u.status }}</span>
-                    </span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div
-              class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between"
-            >
-              <span class="text-xs text-gray-900 xs:text-sm"
-                >Showing 1 to 4 of 50 Entries</span
-              >
-
-              <div class="inline-flex mt-2 xs:mt-0">
-                <button
-                  class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-l hover:bg-gray-400"
-                >
-                  Prev
-                </button>
-                <button
-                  class="px-4 py-2 text-sm font-semibold text-gray-800 bg-gray-300 rounded-r hover:bg-gray-400"
-                >
-                  Next
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+      
     </div>
-
     <div class="mt-8">
-      <h4 class="text-gray-600">Wide Table</h4>
+
+<button type="button" class="bg-indigo-600 text-white text-sm leading-5 font-medium py-2 px-3 rounded-lg">Add New User</button>
+</div>
+    <div class="mt-8">
 
       <div class="flex flex-col mt-6">
         <div
@@ -201,7 +97,7 @@
                   <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
                   >
-                    Title
+                    Email
                   </th>
                   <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
@@ -216,31 +112,24 @@
                   <th
                     class="px-6 py-3 bg-gray-100 border-b border-gray-200"
                   ></th>
+                  <th
+                    class="px-6 py-3 bg-gray-100 border-b border-gray-200"
+                  ></th>
                 </tr>
               </thead>
 
               <tbody class="bg-white">
-                <tr v-for="(u, index) in wideTableData" :key="index">
+                <tr v-for="(u, index) in paginatedTableData" :key="index">
                   <td
                     class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                   >
                     <div class="flex items-center">
-                      <div class="flex-shrink-0 w-10 h-10">
-                        <img
-                          class="w-10 h-10 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt="profile pic"
-                        />
-                      </div>
 
-                      <div class="ml-4">
+                      <div >
                         <div
                           class="text-sm font-medium leading-5 text-gray-900"
                         >
                           {{ u.name }}
-                        </div>
-                        <div class="text-sm leading-5 text-gray-500">
-                          {{ u.email }}
                         </div>
                       </div>
                     </div>
@@ -250,10 +139,7 @@
                     class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                   >
                     <div class="text-sm leading-5 text-gray-900">
-                      {{ u.title }}
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      {{ u.title2 }}
+                      {{ u.email }}
                     </div>
                   </td>
 
@@ -277,6 +163,13 @@
                   >
                     <a href="#" class="text-indigo-600 hover:text-indigo-900"
                       >Edit</a
+                    >
+                  </td>
+                  <td
+                    class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                      >Show</a
                     >
                   </td>
                 </tr>

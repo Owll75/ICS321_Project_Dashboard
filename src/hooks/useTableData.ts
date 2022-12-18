@@ -9,18 +9,16 @@ export interface IPaginatedTableData {
   picture: string;
   name: string;
   role: string;
-  created: string;
+  email: string;
   status: string;
   statusColor: string;
 }
 
 export interface IWideTableData {
-  name: string;
-  email: string;
-  title: string;
-  title2: string;
+  packageNumber: string;
+  category: string;
   status: string;
-  role: string;
+  deleverdTo: string;
 }
 
 export function useTableData() {
@@ -37,7 +35,7 @@ export function useTableData() {
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80',
       name: 'Vera Carpenter',
       role: 'Admin',
-      created: 'Jan 21, 2020',
+      email: 'test2@email.com',
       status: 'Active',
       statusColor: 'green',
     },
@@ -45,8 +43,8 @@ export function useTableData() {
       picture:
         'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80',
       name: 'Blake Bowman',
-      role: 'Editor',
-      created: 'Jan 01, 2020',
+      role: 'customer',
+      email: 'test1@email.com',
       status: 'Active',
       statusColor: 'green',
     },
@@ -54,9 +52,9 @@ export function useTableData() {
       picture:
         'https://images.unsplash.com/photo-1540845511934-7721dd7adec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80',
       name: 'Dana Moore',
-      role: 'Editor',
-      created: 'Jan 10, 2020',
-      status: 'Suspended',
+      role: 'customer',
+      email: 'test3@email.com',
+      status: 'Active',
       statusColor: 'orange',
     },
     {
@@ -64,7 +62,7 @@ export function useTableData() {
         'https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80',
       name: 'Alonzo Cox',
       role: 'Admin',
-      created: 'Jan 18, 2020',
+      email: 'test4@email.com',
       status: 'Inactive',
       statusColor: 'red',
     },
@@ -72,14 +70,13 @@ export function useTableData() {
 
   const wideTableData = ref<IWideTableData[]>(
     [...Array(10).keys()].map(() => ({
-      name: 'John Doe',
-      email: 'john@example.com',
-      title: 'Software Engineer',
-      title2: 'Abs dev',
-      status: 'Active',
-      role: 'Owner',
+      packageNumber: '123456',
+      category: 'Regular',
+      status: 'Deliverd',
+      deleverdTo: 'mohammed ahmed',
     }))
   );
+  
 
   return {
     simpleTableData,
