@@ -1,4 +1,5 @@
 <template>
+  <Suspense>
     <div>
       <h3 class="text-3xl font-medium text-gray-700">packages</h3>
   
@@ -97,6 +98,7 @@
                     >
                     Category
                     </th>
+                  
                     <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
                     >
@@ -108,16 +110,26 @@
                     Deliverd To
                     </th>
                     <th
-                      class="px-6 py-3 bg-gray-100 border-b border-gray-200"
-                    ></th>
+                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
+                    >
+                    Delivery Date
+                    </th>
                     <th
-                      class="px-6 py-3 bg-gray-100 border-b border-gray-200"
-                    ></th>
+                      class="px-6 py-3 bg-gray-100 border-b font-medium   tracking-wider text-right border-gray-200"
+                    >
+                  Edit
+                  </th>
+                    <th
+                      class="px-6 py-3 bg-gray-100 border-b font-medium tracking-wider text-right border-gray-200"
+                    >Visit</th>
+                    <th
+                      class="px-6 py-3 bg-gray-100 border-b font-medium tracking-wider text-right border-gray-200"
+                    >Delete</th>
                   </tr>
                 </thead>
   
-                <tbody class="bg-white">
-                  <tr v-for="(u, index) in wideTableData" :key="index">
+                <tbody class="bg-white" v-bind:id="packages">
+                  <tr v-for="(u, index) in  packages" :key="index">
                     <td
                       class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                     >
@@ -126,7 +138,7 @@
                           <div
                             class="text-sm font-medium leading-5 text-gray-900"
                           >
-                            {{ u.packageNumber }}
+                          {{packages[index].package_number}}
                           </div>
                         </div>
                       </div>
@@ -136,7 +148,7 @@
                       class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                     >
                       <div class="text-sm leading-5 text-gray-900">
-                        {{ u.category }}
+                        {{packages[index].id}}
                       </div>
                       
                     </td>
@@ -146,30 +158,48 @@
                     >
                       <span
                         class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                        >{{ u.status }}</span
+                        > In transit</span
                       >
                     </td>
   
                     <td
                       class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
                     >
-                      {{ u.deleverdTo }}
+                    {{packages[index].customerData.fullname}}
                     </td>
-  
+                    <td
+                      class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                    >
+                    {{packages[index].final_delivery_date}}
+                    </td>
+
                     <td
                       class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                     >
-                      <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                        >Edit</a
-                      >
+                    <a  @click="visitPackage(packages[index])"> 
+                      <div  class="text-indigo-600 cursor-pointer hover:text-indigo-900">
+                    <p >Visit</p>
+                    </div> </a>
                     </td>
                     <td
                       class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                     >
-                      <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                        >Show</a
-                      >
+                    <a  @click="editPackage(packages[index])"> 
+                      <div  class="text-indigo-600 cursor-pointer hover:text-indigo-900">
+                     <p>Edit</p>
+                    </div> </a>
                     </td>
+                    <td
+                      class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
+                    >
+                   
+                    <a @click="deletePackage(packages[index].id)"  > 
+                      <div  class="text-orange-600 cursor-pointer  hover:text-orange-900">
+                     Delete
+                    </div> </a>
+
+                    </td>
+                    
                   </tr>
                 </tbody>
               </table>
@@ -177,16 +207,74 @@
           </div>
         </div>
       </div>
+     
+ 
+
     </div>
+
+    
+  </Suspense>
+ 
   </template>
   
   <script setup lang="ts">
   import { useTableData } from "../hooks/useTableData";
+  import  ts  from "../hooks/useTableData";
+  import  mtdata  from "../hooks/useTableData";
+  
+  import {ref,reactive} from 'vue'
   import {supabase} from '../supabase'
+  import userManagement from '../store/userManagement'
+  import packEdit from '../store/packageManagement'
+import { Suspense } from "vue";
+import router from "../router";
+  
 
-  console.log(supabase.auth.user)
-  const {
+const packages = ref("")
+const packageObj = ref("")
+const isDeleted = ref(false)
+
+getPackages()
+async function getPackages(){
+    let pckgs = await ts.packages.showPackages()
+    console.log(await ts.packages.showPackages())
+ 
+  packages.value =pckgs
+}
+ 
+  
+  async function editPackage(pckObject){
+    console.log(pckObject)
+    packEdit.setPackage.editPackage(pckObject)
+    router.push("/admin/edit")
+  }
+  
+    //-> delete user(user_id,role) //console.log(await userManagement.userManage.deleteUser(user_id,supabase.auth.user().role))
+   // wideTableData  = await useTableData(ts.ts.func());
+   // useTableData(ts.ts.func())
+    //(mtdata.mdata.fun(await ts.ts.func()))
+
+    async function deletePackage(id){
+    console.log(id)
+    packEdit.setPackage.deletePackage(id)
+    isDeleted.value = true
+    router.go(0)
+  }
+
+  async function visitPackage(pckObject){
+    console.log(pckObject)
+    packEdit.setPackage.editPackage(pckObject)
+    router.push("/admin/edit")
+  }
+
+  
+
+
+ 
+   const {
     wideTableData,
-  } = useTableData();
-  </script>
+  } = reactive(useTableData());
+    
+    
+    </script>
   

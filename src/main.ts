@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import userRouter from './userRouter';
+import 'flowbite';
 import './assets/main.css';
 
 import DashboardLayout from './components/DashboardLayout.vue';

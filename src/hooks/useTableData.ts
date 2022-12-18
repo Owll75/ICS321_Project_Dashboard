@@ -1,4 +1,5 @@
-import { ref } from 'vue';
+import { ref,reactive  } from 'vue';
+import { supabase } from '../supabase';
 
 export interface ISimpleTableData {
   city: string;
@@ -14,14 +15,20 @@ export interface IPaginatedTableData {
   statusColor: string;
 }
 
-export interface IWideTableData {
+export  interface  IWideTableData {
   packageNumber: string;
   category: string;
   status: string;
   deleverdTo: string;
+  edit:string;
+  delete:string;
+  visit:string;
+  
 }
 
-export function useTableData() {
+export    function useTableData() {
+
+  
   const simpleTableData = ref<ISimpleTableData[]>([
     { city: 'New York', totalOrders: '200,120' },
     { city: 'Manchester', totalOrders: '632,310' },
@@ -67,20 +74,76 @@ export function useTableData() {
       statusColor: 'red',
     },
   ]);
-
-  const wideTableData = ref<IWideTableData[]>(
-    [...Array(10).keys()].map(() => ({
-      packageNumber: '123456',
+  
+  
+  const wideTableData =  ref <IWideTableData[]>(
+       
+    [...Array(10).keys()].map((t) => ({
+      packageNumber: "ID:",
       category: 'Regular',
       status: 'Deliverd',
       deleverdTo: 'mohammed ahmed',
+      edit:"test",
+      delete:"ttt",
+      visit:"visit",
     }))
+    
+    
   );
-  
+    
 
-  return {
+ 
+  return  {
     simpleTableData,
     paginatedTableData,
     wideTableData,
+    
   };
+}
+const mdata = {
+  async fun(p){
+    return("LEN:"+await p.length)
+  }    
+}
+
+const mydata = {
+  packageNumber: "ID:",
+    category: 'Regular',
+    status: 'Deliverd',
+    deleverdTo: 'mohammed ahmed',
+    edit:"test",
+    delete:"ttt",
+    visit:"visit",
+  
+}
+
+
+const packages = {async  showPackages(){
+  let { data: packages} = await supabase
+  .from('package')
+  .select('*')
+  for(var i=0;i<packages.length;i++){
+    console.log(packages[i].customer_id)
+      packages[i].customerData = await{fullname:await this.customerFullname(await packages[i].customer_id)}
+  }
+  
+  return await packages
+},
+async customerFullname(id){
+  let { data: packageq, error } = await supabase
+  .from('customer')
+  .select(`firstname,lastname
+  `)
+  .eq("id",id)
+  const fullname = await packageq[0].firstname +" "+ packageq[0].lastname; 
+ 
+  return await fullname 
+}
+}
+
+
+
+
+export default {
+  packages
 }

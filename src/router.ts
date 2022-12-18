@@ -14,6 +14,7 @@ import Register from "./views/Register.vue";
 import UnAuthorized from "./views/unauthorized.vue";
 import Customer from "./components/UserLayout.vue"
 import userRouter from "./userRouter";
+import editPackage from './views/editPackage.vue'
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
@@ -21,6 +22,23 @@ const routes: RouteRecordRaw[] = [
     component: Login,
     meta: { layout: "empty" },
   },
+
+  {
+    path: "/",
+    name: "homeblank",
+    redirect:'/admin/report',
+    meta: { layout: "empty" },
+  },
+
+
+  {
+    path: "/admin/",
+    name: "homeblank",
+    redirect:'/admin/report',
+    meta: { layout: "empty" },
+  },
+
+
 /*
   {
     path: "/customer",
@@ -34,6 +52,13 @@ const routes: RouteRecordRaw[] = [
     name: "ReportAdmin",
     meta: { requiresAuth: true },
     component: Report,
+  },
+
+  {
+    path: "/admin/edit",
+    name: "editPackage",
+    meta: { requiresAuth: true },
+    component: editPackage,
   },
   {
     path: "/admin/forms",
