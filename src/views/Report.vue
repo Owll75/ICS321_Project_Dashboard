@@ -90,7 +90,6 @@
     <div class="flex flex-col mt-8">
       <div class="mt-4">
       <h4 class="text-gray-600">Shipments Data</h4>
-
       <div class="mt-6">
         <div class="my-6 overflow-hidden bg-white rounded-md shadow">
           <table class="w-full text-left border-collapse">
@@ -257,4 +256,5 @@ const packagesCount = 124
 const cusmtersCount = 500 
 
 const users = ref<User[]>([...Array(10).keys()].map(() => testUser));
+
 </script>

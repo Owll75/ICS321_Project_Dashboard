@@ -121,7 +121,7 @@
             />
           </svg>
 
-          <span class="mx-4">Forms</span>
+          <span class="mx-4">Send Email</span>
         </router-link>
 
         <!-- <router-link
