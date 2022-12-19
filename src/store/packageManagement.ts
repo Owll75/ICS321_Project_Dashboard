@@ -3,6 +3,12 @@ import { supabase } from '../supabase'
 
 const objectPackage = reactive({
     myPackage:null,
+    locationHistory:null,
+    reatilCenter:null,
+})
+
+const objectCustomer = reactive({
+    customer:null,
 })
 
 
@@ -32,7 +38,47 @@ const setPackage = {
         if(error){
         return false
         }else{return true}
+    },
+
+
+    async visitPackage(id){
+        
+        await setPackageDetails(id) // set packageDetails
+       await setCustomerDetails(await objectPackage.myPackage[0].customer_id)//set Customer details object
+        await setLocationHistory(id)//set Locations object
     }
+
+
+}
+async function setCustomerDetails(customerId){
+    const {data,error} = await supabase
+    .from('customer')
+    .select('*')
+    .eq('id',customerId)
+    if(error) {
+    return false
+    }else{ 
+    console.log("Customer: ")
+    console.log(data)
+    objectCustomer.customer = data 
+    }
+}
+async function setPackageDetails(id){
+    const {data,error} = await supabase
+    .from('package')
+    .select('*')
+    .eq('id',id) //select a package with (id:visited) and show related information
+    objectPackage.myPackage = data //get package details
+
+}
+async function setLocationHistory(id){
+    const {data,error} = await supabase
+    .from('location')
+    .select('*')
+    .eq('package_id',id) //select a package with (id:visited) and show related information
+    console.log("locations: ")
+    console.log(data)
+    objectPackage.locationHistory = data
 }
 
 
@@ -41,4 +87,5 @@ const setPackage = {
 export default{
     setPackage,
     objectPackage,
+    objectCustomer,
 };

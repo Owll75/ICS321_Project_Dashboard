@@ -11,8 +11,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "flowbite": "^1.5.5",
-    "vue": "^3.2.45",
+    "vue": "^3.2.6",
     "vue-router": "4"
   },
   "devDependencies": {

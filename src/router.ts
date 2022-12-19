@@ -15,6 +15,7 @@ import UnAuthorized from "./views/unauthorized.vue";
 import Customer from "./components/UserLayout.vue"
 import userRouter from "./userRouter";
 import editPackage from './views/editPackage.vue'
+import visitPackage from './views/visitPackage.vue'
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
@@ -103,6 +104,13 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true },
     component: Packages,
   },
+  {
+    path: "/admin/visit",
+    name: "visitPackage",
+    meta: { requiresAuth: true },
+    component: visitPackage,
+  },
+  
   // {
   //   path: "/modal",
   //   name: "Modal",
