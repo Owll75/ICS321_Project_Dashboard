@@ -185,6 +185,11 @@
 
 <script setup lang="ts">
 import { useTableData } from "../hooks/useTableData";
+import { computed, ref } from "vue";
+
+let input = ref("");
+const userSerch = [useTableData];
+
 
 const {
   simpleTableData,
