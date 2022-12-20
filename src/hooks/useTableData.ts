@@ -118,18 +118,34 @@ const mydata = {
 }
 
 
-const packages = {async  showPackages(){
-  let { data: packages} = await supabase
-  .from('package')
-  .select('*')
+const packages = {async  showPackages(packages){
+  if(packages==null){return packages = {}}
   for(var i=0;i<packages.length;i++){
     console.log(packages[i].customer_id)
       packages[i].customerData = await{fullname:await this.customerFullname(await packages[i].customer_id)}
+   await this.initStatus(packages[i].status,await packages[i]) 
   }
   
   return await packages
 },
+async selectAllPackages(){
+  let { data: packages} = await supabase
+  .from('package')
+  .select('*')
+  return await this.showPackages(packages)
+},
+
+async selectPackageByPck(n){
+  let { data: packages,error} = await supabase
+  .from('package')
+  .select('*')
+  .eq('package_number',n)
+  console.log(packages)
+  
+  return await this.showPackages(packages)
+},
 async customerFullname(id){
+  console.log("ID:" +id)
   let { data: packageq, error } = await supabase
   .from('customer')
   .select(`firstname,lastname
@@ -138,7 +154,40 @@ async customerFullname(id){
   const fullname = await packageq[0].firstname +" "+ packageq[0].lastname; 
  
   return await fullname 
-}
+},
+
+async initStatus(s,pckg){
+  
+    console.log("Status: "+s)
+    switch(s) { 
+        case 0: { // transit
+           pckg.status = 'transit'
+          console.log(await pckg)
+           break; 
+        } 
+        case 1: {// 
+          pckg.status= 'delivered'
+          await pckg
+           break; 
+        } 
+        case 2: {//
+          pckg.status = 'lost'
+          await pckg
+            break; 
+         } 
+         case 3: {// 
+          pckg.status = 'damaged'
+          await pckg
+            break; 
+         } 
+        default: { 
+           //statements; 
+           break; 
+        } 
+     } 
+  },
+
+
 }
 
 

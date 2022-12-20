@@ -16,6 +16,11 @@ import Customer from "./components/UserLayout.vue"
 import userRouter from "./userRouter";
 import editPackage from './views/editPackage.vue'
 import visitPackage from './views/visitPackage.vue'
+import createCusomer from './views/newUser.vue'
+import createPackage from './views/createPackage.vue'
+import customerEdit from './views/customerEdit.vue'
+
+
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
@@ -110,7 +115,21 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true },
     component: visitPackage,
   },
-  
+  {
+    path: '/admin/v1/create',
+    name: 'createCUstomer',
+    component: createCusomer,
+     meta: {requiresAuth: true},
+    
+   },
+
+   {
+    path: '/admin/v1/customeredit',
+    name: 'customerEdit',
+    component: customerEdit,
+     meta: {requiresAuth: true},
+    
+   },
   // {
   //   path: "/modal",
   //   name: "Modal",
@@ -122,7 +141,17 @@ const routes: RouteRecordRaw[] = [
     redirect:"/login",
      meta: {requiresAuth: true},
     
-   }
+   },
+   {
+    path: '/admin/create',
+    name: 'createPackage',
+    component: createPackage,
+     meta: {requiresAuth: true},
+    
+   },
+
+
+   
 ];
 var multiRoutes = []
 multiRoutes = multiRoutes.concat(routes,userRouter)

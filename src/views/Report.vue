@@ -99,7 +99,7 @@
                 <th
                   class="px-5 py-3 text-sm font-medium text-gray-100 uppercase bg-indigo-800"
                 >
-                  City
+                  Category
                 </th>
                 <th
                   class="px-5 py-3 text-sm font-medium text-gray-100 uppercase bg-indigo-800"
@@ -110,18 +110,41 @@
             </thead>
             <tbody>
               <tr
-                v-for="(i, index) in simpleTableData"
-                :key="index"
                 class="hover:bg-gray-200"
               >
-                <td class="px-6 py-4 text-lg text-gray-700 border-b">
-                  {{ i.city }}
+              <td class="px-6 py-4 text-lg text-gray-700 border-b">
+                 Regular Packages
                 </td>
-                <td class="px-6 py-4 text-gray-500 border-b">
-                  {{ i.totalOrders }}
+                <td class="px-6 py-4 text-lg text-gray-700 border-b">
+                 {{ regularCate }}
+                </td>
+              </tr>
+              <tr  class="hover:bg-gray-200">
+                <td class="px-6 py-4 text-lg text-gray-700 border-b">
+                 Fragile Packages
+                </td>
+                <td class="px-6 py-4 text-lg  text-gray-700 border-b">
+                 {{ fragileCate }}
+                </td>
+              </tr>
+              <tr  class="hover:bg-gray-200">
+                <td class="px-6 py-4 text-lg text-gray-700 border-b">
+                 Liquid Packages
+                </td>
+                <td class="px-6 py-4 text-lg  text-gray-700 border-b">
+                 {{ liquideCate }}
+                </td>
+              </tr>
+              <tr  class="hover:bg-gray-200">
+                <td class="px-6 py-4 text-lg text-gray-700 border-b">
+                 Chemical Packages
+                </td>
+                <td class="px-6 py-4 text-lg  text-gray-700 border-b">
+                 {{ chemicalCate }}
                 </td>
               </tr>
             </tbody>
+    
           </table>
         </div>
       </div>
@@ -227,6 +250,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useTableData } from "../hooks/useTableData";
+import { supabase } from '../supabase'
 
 const {
   simpleTableData,
@@ -253,8 +277,59 @@ const testUser: User = {
   status: "Active",
   role: "Owner",
 };
-const packagesCount = 124
-const cusmtersCount = 500 
+const packagesCount = ref("0")
+const cusmtersCount = ref("0")
+const chemicalCate = ref("0")
+const regularCate = ref("0")
+const fragileCate = ref("0")
+const liquideCate = ref("0")
+
+initReport()
+async function initReport(){
+
+
+
+  let { data: liquidCategory, error1 } = await supabase
+  .from('liquidCategory')
+  .select("*")
+
+  liquideCate.value = liquidCategory.length
+
+  let { data: q1, error2 } = await supabase
+  .from('chemicalCategory')
+  .select("*")
+
+  chemicalCate.value = q1.length
+
+  let { data: q2, error3 } = await supabase
+  .from('regularCategory')
+  .select("*")
+
+  regularCate.value = q2.length
+
+
+  let { data: q3, error4 } = await supabase
+  .from('fragileCategory')
+  .select("*")
+
+  fragileCate.value = q3.length
+
+
+  let { data: pk, error15 } = await supabase
+  .from('package')
+  .select("*")
+
+  packagesCount.value = pk.length
+
+
+  let { data: c, error13} = await supabase
+  .from('customer')
+  .select("*")
+
+  cusmtersCount.value = c.length
+
+}
+
 
 const users = ref<User[]>([...Array(10).keys()].map(() => testUser));
 </script>

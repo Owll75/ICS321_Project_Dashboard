@@ -5,79 +5,82 @@
   
       <div class="mt-8">
 
-<div class="mt-6">
-  <h2 class="text-xl font-semibold leading-tight text-gray-700"></h2>
-
-  <div class="flex flex-col mt-3 sm:flex-row">
-    <div class="flex">
-      <div class="relative">
-        <select
-            class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
-          >
-            <option>All</option>
-            <option>Deliverd</option>
-            <option>Delivring</option>
-            <option>On hold</option>
-          </select>
-
-        <div
-          class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none"
-        >
-          <svg
-            class="w-4 h-4 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-            />
-          </svg>
-        </div>
-      </div>
-
-      <div class="relative">
+<div >
+  <form class="mt-5 inline-grid grid-cols-3 gap-10" @submit.prevent="doFilter">
+  <div class="">
+    <label for="categorySelect">Category</label>
+    <select id="categorySelect" v-model="selectedCategory" class="form-select appearance-none
+      block
+      w-half   
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+        <option selected value="-1">Choose a category</option>
+        <option value="0">regular</option>
+        <option value="1">fragile</option>
+        <option value="2">liquid</option>
+        <option value="3">chemical</option>
         
-
-        <div
-          class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none"
-        >
-          <svg
-            class="w-4 h-4 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-            />
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="relative block mt-2 sm:mt-0">
-      <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-        <svg
-          viewBox="0 0 24 24"
-          class="w-4 h-4 text-gray-500 fill-current"
-        >
-          <path
-            d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-          />
-        </svg>
-      </span>
-
-      <input
-        placeholder="Search"
-        class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-      />
-    </div>
+    </select>
   </div>
+
+  <div class="">
+    <label for="categorySelect">Status</label>
+    <select id="categorySelect" v-model="selectedStatus" class="form-select appearance-none
+      block
+      w-half   
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+        <option selected value="-1">Choose a status</option>
+        <option value="0">transit</option>
+        <option value="1">delivered</option>
+        <option value="2">lost</option>
+        <option value="3">damaged</option>
+        
+    </select>
+  </div>
+
+
+
+  <div class="">
+    
+      <label for="default-search" >Search</label>
+    <div class="relative">
+    
+
+        <input type="search" id="default-search" class="rounded  bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded"  placeholder="package number" v-model="packageNumberTxt" >
+        <button type="submit" class="text-white ml-4 right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    </div>
+  
+   
+  </div>
+  <div>
+
+  </div>
+</form>
 </div>
 
 </div>
 <div class="mt-8">
 
-<button type="button" class="bg-indigo-600 text-white text-sm leading-5 font-medium py-2 px-3 rounded-lg">Add New Package</button>
+<button type="button" class="bg-indigo-600 text-white text-sm leading-5 font-medium py-2 px-3 rounded-lg" @click="createPackage()">Add New Package</button>
         <div class="flex flex-col mt-6">
           <div
             class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
@@ -93,7 +96,7 @@
                     >
                       Package Number
                     </th>
-                    <th
+                    <th v-if="categoryTxt"
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
                     >
                     Category
@@ -151,11 +154,11 @@
                       </div>
                     </td>
   
-                    <td
+                    <td v-if="categoryTxt"
                       class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                     >
                       <div class="text-sm leading-5 text-gray-900">
-                        {{packages[index].id}}
+                        {{categoryTxt}}
                       </div>
                       
                     </td>
@@ -164,8 +167,8 @@
                       class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                     >
                       <span
-                        class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                        > In transit</span
+                        class="inline-flex px-2 text-xs font-semibold leading-5 text-black-800 bg-black-100 rounded-full"
+                        > {{packages[index].status}}</span
                       >
                     </td>
   
@@ -240,11 +243,15 @@ import router from "../router";
 const packages = ref("")
 const packageObj = ref("")
 const isDeleted = ref(false)
+const selectedStatus = ref("-1")
+const selectedCategory = ref("-1")
+const categoryTxt = ref("")
+const packageNumberTxt = ref("")
 
 getPackages()
 async function getPackages(){
-    let pckgs = await ts.packages.showPackages()
-    console.log(await ts.packages.showPackages())
+    let pckgs = await ts.packages.selectAllPackages()
+    console.log(await ts.packages.selectAllPackages())
  
   packages.value =pckgs
 }
@@ -277,8 +284,82 @@ async function getPackages(){
   }
 
   
+  function createPackage(){
+    router.push("/admin/create")
+
+  }
 
 
+  async function selectStatus(){
+    console.log("OK:"+selectedStatus.value)
+  //(await packEdit.setPackage.selectByCategory(selectedCategory.value))
+  
+  packages.value = await ts.packages.showPackages(await packEdit.setPackage.selectByStatus(selectedStatus.value))
+
+  console.log(packages.value)
+  }
+
+async function selectCategory(){
+  console.log(selectedCategory.value)
+  //(await packEdit.setPackage.selectByCategory(selectedCategory.value))
+  await setCategoryTxt(selectedCategory.value)
+  packages.value = await ts.packages.showPackages(await packEdit.setPackage.selectByCategory(selectedCategory.value))
+
+  console.log(packages.value)
+  }
+
+
+
+  async function setCategoryTxt(cate){
+    console.log("Case"+cate)
+    switch(cate) { 
+        case '0': { // regular
+          categoryTxt.value = 'Regular'
+           break; 
+        } 
+        case '1': {//fragile 
+          categoryTxt.value = 'Fragile'
+            
+           break; 
+        } 
+        case '2': {//liquid
+          categoryTxt.value = 'Liquid'
+            break; 
+         } 
+         case '3': {//chemical 
+          categoryTxt.value = 'Chemical'
+            break; 
+         } 
+        default: { 
+           //statements; 
+           break; 
+        } 
+     } 
+  }
+  
+
+
+  async function doFilter(){
+    if(selectedCategory.value == '-1'){
+     await selectStatus()
+      await getPackages()
+    }else if(selectedCategory.value == '-1'){
+      await selectStatus()
+      categoryTxt.value = ""
+    
+    }else if(selectedStatus.value == '-1'){
+      await selectCategory()
+    }
+  
+    if(packageNumberTxt.value.length>0){
+      //do search by package number
+      console.log("found it")
+    //  console.log(await ts.packages.selectPackageByPck(packageNumberTxt.value))
+      packages.value = await ts.packages.selectPackageByPck(packageNumberTxt.value)
+      categoryTxt.value = ""
+    
+    }
+  }
  
    const {
     wideTableData,
