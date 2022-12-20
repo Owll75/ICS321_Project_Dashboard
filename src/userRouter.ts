@@ -8,7 +8,7 @@ import Login from "./views/Login.vue";
 import Modal from "./views/Modal.vue";
 import Card from "./views/Card.vue";
 import Blank from "./views/Blank.vue";
-import Packages from "./views/Package.vue";
+import UserPackages from "./views/UserPackages.vue";
 import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
 import Navbar from "./components/navbar.vue";
@@ -30,10 +30,10 @@ const userRoutes: RouteRecordRaw[] = [
     component: Card,
   },
   {
-    path: "/customer/packages",
-    name: "Packages",
+    path: "/customer/userpackages",
+    name: "UserPackages",
     meta: { requiresAuth: true ,layout:"user"},
-    component: Packages,
+    component: UserPackages,
   },
   
   {

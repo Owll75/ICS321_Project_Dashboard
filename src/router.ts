@@ -6,7 +6,7 @@ import Users from "./views/Users.vue";
 // import UIElements from "./views/UIElements.vue";
 import Login from "./views/Login.vue";
 import Modal from "./views/Modal.vue";
-import Card from "./views/Card.vue";
+// import Card from "./views/Card.vue";
 import Blank from "./views/Blank.vue";
 import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
@@ -96,6 +96,7 @@ const routes: RouteRecordRaw[] = [
   //   path: "/cards",
   //   name: "Cards",
   //   component: Card,
+  //   meta: { layout: "empty" },
   // },
   {
     path: "/admin/Users",

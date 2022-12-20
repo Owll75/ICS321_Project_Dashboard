@@ -1,6 +1,7 @@
 <template>
   <Suspense>
     <div>
+<<<<<<< HEAD
       <h3 class="text-3xl font-medium text-gray-700">packages</h3>
   
       <div class="mt-8">
@@ -81,6 +82,23 @@
 <div class="mt-8">
 
 <button type="button" class="bg-indigo-600 text-white text-sm leading-5 font-medium py-2 px-3 rounded-lg" @click="createPackage()">Add New Package</button>
+=======
+      <h3 class="text-3xl font-medium text-gray-700">Packages</h3>
+      <br>
+      <div>
+            <form class="w-full max-w-sm">
+      <div class="flex items-center border-b border-teal-500 py-2">
+        <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="Enter Package Number" aria-label="Full name">
+        <button class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+          Search for Package
+        </button>
+      </div>
+    </form>
+        </div>
+<div class="mt-8">
+
+<button type="button" class="bg-teal-500 text-white text-sm leading-5 font-medium py-2 px-3 rounded-lg">Add New Package</button>
+>>>>>>> cf1cfab518c0a0f10e8ee7dbd02b375098f38537
         <div class="flex flex-col mt-6">
           <div
             class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
