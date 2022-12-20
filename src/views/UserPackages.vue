@@ -143,50 +143,5 @@
   const packages = ref("")
   const packageObj = ref("")
   const isDeleted = ref(false)
-  
-  getPackages()
-  async function getPackages(){
-      let pckgs = await ts.packages.showPackages()
-      console.log(await ts.packages.showPackages())
-   
-    packages.value =pckgs
-  }
-   
-    
-    async function editPackage(pckObject){
-      console.log(pckObject)
-      packEdit.setPackage.editPackage(pckObject)
-      router.push("/admin/edit")
-    }
-    
-      //-> delete user(user_id,role) //console.log(await userManagement.userManage.deleteUser(user_id,supabase.auth.user().role))
-     // wideTableData  = await useTableData(ts.ts.func());
-     // useTableData(ts.ts.func())
-      //(mtdata.mdata.fun(await ts.ts.func()))
-  
-      async function deletePackage(id){
-      console.log(id)
-      packEdit.setPackage.deletePackage(id)
-      isDeleted.value = true
-      router.go(0)
-    }
-  
-    async function visitPackage(id){
-        localStorage.removeItem("visitID")
-        localStorage.setItem("visitID",id)
-        
-        router.push("/admin/visit")
-        
-    }
-  
-    
-  
-  
-   
-     const {
-      wideTableData,
-    } = reactive(useTableData());
-      
-      
       </script>
     
