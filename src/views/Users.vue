@@ -11,12 +11,22 @@
           Search for User
         </button>
       </div>
+<<<<<<< HEAD
+      
+    </div>
+    <form @submit.prevent="goNewUser">
+    <div class="mt-8">
+
+<button type="button" class="bg-indigo-600 text-white text-sm leading-5 font-medium py-2 px-3 rounded-lg" @click="goNewUser">Add New User</button>
+=======
     </form>
         </div>
 <div class="mt-8">
 
 <button type="button" class="bg-teal-500 text-white text-sm leading-5 font-medium py-2 px-3 rounded-lg">Add New Package</button>
+>>>>>>> cf1cfab518c0a0f10e8ee7dbd02b375098f38537
 </div>
+</form>
     <div class="mt-8">
 
       <div class="flex flex-col mt-6">
@@ -32,7 +42,7 @@
                   <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
                   >
-                    Name
+                    Full Name
                   </th>
                   <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
@@ -42,14 +52,18 @@
                   <th
                     class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
                   >
-                    Status
+                    Phone
                   </th>
+            
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase bg-gray-100 border-b border-gray-200"
-                  >
-                    Role
-                  </th>
+<<<<<<< HEAD
+                    class="px-6 py-3 bg-gray-100 border-b border-gray-200"
+                  ></th>
                   <th
+                    class="px-6 py-3 bg-gray-100 border-b border-gray-200"
+                  ></th>
+           
+=======
                       class="px-6 py-3 bg-gray-100 border-b font-medium   tracking-wider text-right border-gray-200"
                     >
                   Edit
@@ -60,11 +74,12 @@
                     <th
                       class="px-6 py-3 bg-gray-100 border-b font-medium tracking-wider text-right border-gray-200"
                     >Delete</th>
+>>>>>>> cf1cfab518c0a0f10e8ee7dbd02b375098f38537
                 </tr>
               </thead>
 
               <tbody class="bg-white">
-                <tr v-for="(u, index) in paginatedTableData" :key="index">
+                <tr v-for="(u, index) in allCustomers" :key="index">
                   <td
                     class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                   >
@@ -74,7 +89,7 @@
                         <div
                           class="text-sm font-medium leading-5 text-gray-900"
                         >
-                          {{ u.name }}
+                          {{ u.firstname + " " + u.lastname }}
                         </div>
                       </div>
                     </div>
@@ -92,30 +107,34 @@
                     class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                   >
                     <span
-                      class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                      >{{ u.status }}</span
+                      class="inline-flex px-2 text-xs font-semibold leading-5   rounded-full"
+                      >{{ u.phone }}</span
                     >
                   </td>
 
-                  <td
-                    class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
-                  >
-                    {{ u.role }}
-                  </td>
+                  
 
                   <td
                     class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Edit</a
-                    >
+                  <a @click="editCustomer(u.user_id)"  > 
+                      <div  class="text-grey-600 cursor-pointer  hover:text-grey-900">
+                     Edit
+                    </div> </a>
                   </td>
                   <td
                     class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                   >
+<<<<<<< HEAD
+                  <a @click="deleteCustomer(u.user_id)"  > 
+                      <div  class="text-orange-600 cursor-pointer  hover:text-orange-900">
+                     Delete
+                    </div> </a>
+=======
                     <a href="#" class=" text-indigo-600 hover:text-indigo-900"
                       >Show</a
                     >
+>>>>>>> cf1cfab518c0a0f10e8ee7dbd02b375098f38537
                   </td>
                   <td>
                     <a href="#"> 
@@ -135,10 +154,44 @@
 
 <script setup lang="ts">
 import { useTableData } from "../hooks/useTableData";
+<<<<<<< HEAD
+import router from "../router";
+import userManagement from '../store/userManagement'
+import {ref} from 'vue'
+
+const allCustomers = ref("")
+
+initCustomers()
+
+async function initCustomers(){
+  allCustomers.value = await userManagement.userManage.selectCustomer()
+  console.log( allCustomers.value)
+}
+
+
+async function deleteCustomer(uid){
+  console.log("OK")
+  userManagement.userManage.deleteUser(uid)
+  
+ 
+}
+
+async function editCustomer(uid){
+  localStorage.removeItem("savedID")
+  localStorage.setItem("savedID",uid)
+  router.push("/admin/v1/customeredit")
+}
+
+async function goNewUser(){
+  router.push("/admin/v1/create")
+
+}
+=======
 import { computed, ref } from "vue";
 
 let input = ref("");
 const userSerch = [useTableData];
+>>>>>>> cf1cfab518c0a0f10e8ee7dbd02b375098f38537
 
 
 const {
