@@ -39,9 +39,4 @@
   import packEdit from '../store/packageManagement'
 import { Suspense } from "vue";
 import router from "../router";
- function editPackage(){
-    // console.log(pckObject)
-    // packEdit.setPackage.editPackage(pckObject)
-    router.push("/customer/sendPackage")
-  }
 </script>

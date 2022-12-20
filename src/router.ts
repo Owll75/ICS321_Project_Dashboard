@@ -3,7 +3,6 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Report from "./views/Report.vue";
 import Forms from "./views/Forms.vue";
 import Users from "./views/Users.vue";
-// import UIElements from "./views/UIElements.vue";
 import Login from "./views/Login.vue";
 import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
@@ -110,18 +109,12 @@ const routes: RouteRecordRaw[] = [
      meta: {requiresAuth: true},
     
    },
-  // {
-  //   path: "/modal",
-  //   name: "Modal",
-  //   component: Modal,
-  // },
    {
     path: '/logout',
     name: 'Signout',
     redirect:"/login",
      meta: {requiresAuth: true},
     
-   }
    },
    {
     path: '/admin/create',
@@ -129,11 +122,10 @@ const routes: RouteRecordRaw[] = [
     component: createPackage,
      meta: {requiresAuth: true},
     
-   },
-
-
-   
+   }
+   ,
 ];
+
 var multiRoutes = []
 multiRoutes = multiRoutes.concat(routes,userRouter)
 const router = createRouter({
