@@ -1,17 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 
 import UserHomePage from "./views/UserHomePage.vue";
-import Forms from "./views/Forms.vue";
-import Users from "./views/Users.vue";
-// import UIElements from "./views/UIElements.vue";
 import Login from "./views/Login.vue";
-import Modal from "./views/Modal.vue";
-import Card from "./views/Card.vue";
-import Blank from "./views/Blank.vue";
 import UserPackages from "./views/UserPackages.vue";
 import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
 import Navbar from "./components/navbar.vue";
+import SendPackage from "./views/SendPackage.vue"
 const userRoutes: RouteRecordRaw[] = [
  
  
@@ -21,47 +16,25 @@ const userRoutes: RouteRecordRaw[] = [
     meta: { requiresAuth: true,layout:"user" },
     component: UserHomePage,
   },
- 
-
-  {
-    path: "/customer/cards",
-    name: "Cards",
-    meta: { requiresAuth: true ,layout:"user"},
-    component: Card,
-  },
   {
     path: "/customer/userpackages",
     name: "UserPackages",
     meta: { requiresAuth: true ,layout:"user"},
     component: UserPackages,
   },
-  
   {
-    path: "/customer/Users",
-    name: "Users",
-    component: Users,
+    path: "/customer/sendPackage",
+    name: "SendPackage",
     meta: { requiresAuth: true ,layout:"user"},
-  },
-  {
-    path: "/customer/forms",
-    name: "Forms",
-    component: Forms,
-    meta: { requiresAuth: true ,layout:"user"},
-  },
-  // {
-  //   path: "/modal",
-  //   name: "Modal",
-  //   component: Modal,
-  // },
-  // {
-  //   path: "/blank",
-  //   name: "Blank",
-  //   component: Blank,
-  // },
-
-
-  
+    component: SendPackage,
+  }
 ];
+// var multiRoutes = []
+// multiRoutes = multiRoutes.concat(routes,userRouter)
+// const router = createRouter({
+//   history: createWebHistory(),
+//   routes: multiRoutes,
+// });
 
 
 

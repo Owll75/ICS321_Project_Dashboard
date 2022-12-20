@@ -14,7 +14,7 @@
     
         <div class="flex space-x-7">
             <div class="box-content h-32 w-32 p-4 border-4 max-w-sm rounded overflow-hidden shadow-lg ">
-                <button class="box-content h-32 w-32 font-bold text-2xl ">
+                <button class="box-content h-32 w-32 font-bold text-2xl " @click="editPackage()">
                     Send Package
                 </button>
             </div>
@@ -28,3 +28,20 @@
 
 
 </template>
+<script setup lang="ts">
+  import { useTableData } from "../hooks/useTableData";
+  import  ts  from "../hooks/useTableData";
+  import  mtdata  from "../hooks/useTableData";
+  
+  import {ref,reactive} from 'vue'
+  import {supabase} from '../supabase'
+  import userManagement from '../store/userManagement'
+  import packEdit from '../store/packageManagement'
+import { Suspense } from "vue";
+import router from "../router";
+ function editPackage(){
+    // console.log(pckObject)
+    // packEdit.setPackage.editPackage(pckObject)
+    router.push("/customer/sendPackage")
+  }
+</script>

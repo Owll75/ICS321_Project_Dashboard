@@ -5,9 +5,6 @@ import Forms from "./views/Forms.vue";
 import Users from "./views/Users.vue";
 // import UIElements from "./views/UIElements.vue";
 import Login from "./views/Login.vue";
-import Modal from "./views/Modal.vue";
-// import Card from "./views/Card.vue";
-import Blank from "./views/Blank.vue";
 import Packages from "./views/Package.vue";
 import NotFound from "./views/NotFound.vue";
 import Register from "./views/Register.vue";
@@ -38,16 +35,6 @@ const routes: RouteRecordRaw[] = [
     redirect:'/admin/report',
     meta: { layout: "empty" },
   },
-
-
-/*
-  {
-    path: "/customer",
-    name: "customer",
-    component: Customer,
-    meta:{requiresAuth: true,layout:'empty'},
-  },
-  */
   {
     path: "/admin/report",
     name: "ReportAdmin",
@@ -85,14 +72,6 @@ const routes: RouteRecordRaw[] = [
     meta: {layout: 'empty',requiresAuth: true},
     
    },
-
-
-  // {
-  //   path: "/cards",
-  //   name: "Cards",
-  //   component: Card,
-  //   meta: { layout: "empty" },
-  // },
   {
     path: "/admin/Users",
     name: "UsersAdmin",
@@ -111,12 +90,6 @@ const routes: RouteRecordRaw[] = [
     meta: { requiresAuth: true },
     component: visitPackage,
   },
-  
-  // {
-  //   path: "/modal",
-  //   name: "Modal",
-  //   component: Modal,
-  // },
    {
     path: '/logout',
     name: 'Signout',
